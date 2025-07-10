@@ -59,7 +59,6 @@ Build a full-stack application that:
 
 3. Use **RxJS operators** (e.g., `switchMap`, `mergeMap`, `concatMap`, `exhaustMap`, etc.) to handle the data flow.
 
-4. Avoid using nested `subscribe()` calls.
 
 ---
 
@@ -85,9 +84,8 @@ ng serve
 
 ## 🎁 Bonus Points (Optional)
 - Use Angular Material or Bootstrap for styling
-- Add basic exception handling with `@ControllerAdvice`
 - Implement unit tests for backend or frontend
-- Use localStorage or service caching
+- Use caching
 
 ---
 
