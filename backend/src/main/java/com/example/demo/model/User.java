@@ -1,1 +1,0 @@
-// TODO: Define User JPA entity

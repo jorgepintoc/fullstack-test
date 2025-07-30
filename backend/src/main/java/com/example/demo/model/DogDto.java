@@ -1,1 +1,0 @@
-// TODO: Define dog image response mapping

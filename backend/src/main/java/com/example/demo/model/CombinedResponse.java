@@ -1,1 +1,0 @@
-// TODO: Define combined User + Dog response model
