@@ -1,8 +1,13 @@
 package com.example.demo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class CombinedResponse {
-
-    // TODO: Define combined User + Dog response model
-
+    private User user;
+    private String dogImageUrl;
 }
+
 
