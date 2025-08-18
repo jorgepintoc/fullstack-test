@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CombinedResponse {
-    private User user;
+    private AppUser user;
     private String dogImageUrl;
 }
 
