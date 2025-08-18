@@ -1,95 +1,90 @@
-# 🧪 Full-Stack Coding Test – Angular + Spring Boot (with H2 + Search)
+# Full-Stack Technical Test
 
-### ⏱ Estimated Time: 1 Hour
-
-## 🎯 Objective
-Build a full-stack application that:
-- Fetches and stores a random user in an H2 database
-- Fetches a random dog image and combines it with the user
-- Allows searching stored users by name
-- Displays everything in Angular using RxJS
+This exercise is designed to evaluate your **Spring Boot** and **Angular** skills.  
+You should be able to complete the **core requirements** within ~1 hour.  
+The **bonus section** is optional and can be attempted if time allows.
 
 ---
 
-## 🧰 Technologies Required
-- **Backend**: Java, Spring Boot, Spring Data JPA, H2, WebClient
-- **Frontend**: Angular, RxJS
+## Requirements
+
+### Spring Boot Backend
+- Create a REST API with the following endpoints:
+
+  - `GET /api/user/random`  
+    - Fetches:
+      1. A random user from [randomuser.me](https://randomuser.me/api)  
+      2. A random dog image from [dog.ceo](https://dog.ceo/api/breeds/image/random)  
+    - Combines the user + dog image into a JSON response.  
+    - Example response:
+      ```json
+      {
+        "name": "Marina Šijan",
+        "email": "marina.sijan@example.com",
+        "dogImage": "https://images.dog.ceo/breeds/husky/n02110185_1469.jpg"
+      }
+      ```
+    - Handle errors gracefully if one of the APIs fails.
 
 ---
 
-## ✅ Backend Requirements (Spring Boot)
+### Angular Frontend
+- Build a single-page app that:
+  - Calls `GET /api/user/random`.
+  - Uses the random user’s **first name** to call **[api.agify.io](https://api.agify.io)** directly from the frontend:
+    - Example: `https://api.agify.io/?name=marina`
+  - Combines the backend response with the predicted age and displays it.
+  - Uses at least **one RxJS operator** (`switchMap`, `mergeMap`, `forkJoin`, etc.) in handling API calls.
+  - The UI can be minimal but should clearly display:
+    - User’s name  
+    - Email  
+    - Predicted age  
+    - Dog image  
 
-1. Implement the following endpoint:
-   ```http
-   GET /api/user/random
-   ```
-   - Fetches a user from [https://randomuser.me/api](https://randomuser.me/api)
-   - Stores the user in an H2 in-memory database
-   - Fetches a dog image from [https://dog.ceo/api/breeds/image/random](https://dog.ceo/api/breeds/image/random)
-   - Returns a combined response:
-     ```json
-     {
-       "user": {
-         "uuid": "user-id",
-         "name": "John Doe",
-         "email": "john@example.com",
-         "pictureUrl": "https://..."
-       },
-       "dogImageUrl": "https://..."
-     }
+---
+
+## Bonus (Optional)
+If you have extra time, extend the project with persistence and search:
+
+### Backend
+- Use **H2 Database** with **Spring Data JPA**.
+- Save fetched users into the database.
+- Add endpoint:  
+  `GET /api/user/search?name=...`  
+  Returns all users whose names contain the given string.
+- Enable H2 console at:  
+  [http://localhost:8080/h2-console](http://localhost:8080/h2-console).
+
+### Frontend
+- Add a search input field (with debounce).
+- When the user types, call `/api/user/search?name=...` and display the results.
+
+---
+
+## Instructions
+1. **Run the backend**  
+   - Navigate to `backend/` and run:  
+     ```bash
+     ./gradlew bootRun
      ```
+   - The API should be available at `http://localhost:8080/api`.
 
-2. Implement the following search endpoint:
-   ```http
-   GET /api/user/search?name=John
-   ```
-   - Searches for users whose name contains the given string (case-insensitive)
+2. **Run the frontend**  
+   - Navigate to `frontend/` and run:  
+     ```bash
+     npm install
+     ng serve
+     ```
+   - Open [http://localhost:4200](http://localhost:4200).
 
----
-
-## 💻 Frontend Requirements (Angular)
-
-1. Call `/api/user/random` and display:
-   - User name
-   - Email
-   - Profile picture
-   - Dog image
-
-2. Implement a search box that calls `/api/user/search?name=...` on user input and displays matching users.
-
-3. Use **RxJS operators** (e.g., `switchMap`, `mergeMap`, `concatMap`, `exhaustMap`, etc.) to handle the data flow.
-
+3. **Deliverables**
+   - A working backend and frontend implementation.
+   - Clean, readable, and maintainable code.
+   - Bonus features if you choose to implement them.
 
 ---
 
-## 🖥 Backend Setup
-```bash
-cd backend
-./mvnw spring-boot:run
-```
-- Base URL: `http://localhost:8080`
-- H2 Console: `http://localhost:8080/h2-console`
-
----
-
-## 🌐 Frontend Setup
-```bash
-cd frontend
-npm install
-ng serve
-```
-- App runs at: `http://localhost:4200`
-
----
-
-## 🎁 Bonus Points (Optional)
-- Use Angular Material or Bootstrap for styling
-- Implement unit tests for backend or frontend
-- Use caching
-
----
-
-## 📤 Submission Instructions
-- Push your completed project to a GitHub repository (public or private)
-- Or send a `.zip` of your project folder
-- Include a `README.md` with any notes or assumptions
+## Notes
+- Focus on correctness and code quality.  
+- The **bonus** is not mandatory but helps showcase advanced skills.  
+- Keep track of time — aim to have the core solution done within an hour.

@@ -1,11 +1,19 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Table(name = "app_user")
+
+//@Entity
+//@Table(name = "app_user")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AppUser {
 
-    // TODO: Define User JPA entity
-
+  private String uuid;
+  private String fullName;
+  private String email;
+  private String pictureUrl;
 }
-
