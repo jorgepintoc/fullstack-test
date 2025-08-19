@@ -34,7 +34,7 @@ The **bonus section** is optional and can be attempted if time allows.
   - Uses the random user’s **first name** to call **[api.agify.io](https://api.agify.io)** directly from the frontend:
     - Example: `https://api.agify.io/?name=marina`
   - Combines the backend response with the predicted age and displays it.
-  - Uses at least **one RxJS operator** (`switchMap`, `mergeMap`, `forkJoin`, etc.) in handling API calls.
+  - Uses RxJS in handling API calls.
   - The UI can be minimal but should clearly display:
     - User’s name  
     - Email  
